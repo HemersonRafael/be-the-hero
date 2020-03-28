@@ -1,0 +1,53 @@
+/*
+
+Rota: o conjunto completo como http://localhost:3333/users
+Recursos: é o que vem depois da / no exemplo acima é users
+
+
+
+* Metodos HTTP:
+* GET: Buscar/listar uma informação do back-end
+* POST: Criar uma informação no back-end
+* PUT: Alterar uma informação no bank-end 
+* DELETE: Deletar uma informação no back-end
+
+* Tipos de parâmetros:
+* Query Params: Parâmetros nomeados enviados na rota após "?" (Filtros, paginação)
+* Router Params: Parâmetros utilizados para identificar recursos
+* Request Body:
+
+* Driver: SELECT * FROM users
+* Query Builder: table('')
+
+//Query Params
+//Acessar rota: http://localhost:3333/users/?name=hemerson&idade=25
+routes .get('/users', (request, response) => {
+    //return response.send('<h1>Hello world!</h1>')
+    const params = request.query;
+    console.log(params);
+    return response.json({
+        nome : 'hemerson',
+        idade : 25
+    })
+});
+
+//Router Params
+//Acessar rota: http://localhost:3333/users/1
+routes .get('/users/:id', (request, response) => {
+    //return response.send('<h1>Hello world!</h1>')
+    const params = request.params;
+    console.log(params);
+    return response.json({
+        nome : 'hemerson',
+        idade : 25
+    })
+});
+
+//Request body
+//Acessar rota: http://localhost:3333/users/1
+routes .post('/users', (request, response) => {
+    //return response.send('<h1>Hello world!</h1>')
+    const body = request.body;
+    console.log(body);
+});
+*/
