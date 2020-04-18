@@ -37,7 +37,19 @@ export default function Detail(){
     }
 
     function sendWhatsapp(){
-        Linking.OpenURL(`https://api.whatsapp.com/send?text=${message}&phone=${incident.whatsapp}`);
+        Linking.canOpenURL(`whatsapp://send?text=${message}&phone=${incident.whatsapp}`)
+        .then(supported =>{
+                if(supported){
+                    return Linking.openURL(
+                        `whatsapp://send?text=${message}&phone=${incident.whatsapp}`
+                    );
+                }else{
+                    return Linking.openURL(
+                        `https://api.whatsapp.com/send?text=${message}&phone=${incident.whatsapp}`
+                    );
+                }
+            }
+        )
     }
 
     return(
